@@ -21,6 +21,11 @@ more_movies = [
     :release_date => '13-Aug-2021'}
 ]
 
+Movie.find_or_create_by(title: "Yifei Wang Story", rating: "PG", release_date: "2025-01-01")
+Movie.find_or_create_by(title: "Inception", rating: "PG-13", release_date: "2010-07-16")
+Movie.find_or_create_by(title: "The Battle at Lake Changjin", rating: "R", release_date: "2021-09-30")
+
+
 more_movies.each do |movie|
   Movie.create!(movie)
 end
