@@ -3,12 +3,19 @@
 <table>
   <thead>
     <tr>
-      <th>Title</th>
-      <th>Rating</th>
-      <th>Release Date</th>
+      <th>
+        <%= link_to "Title", movies_path(sort: "title", direction: params[:direction] == "asc" ? "desc" : "asc") %>
+      </th>
+      <th>
+        <%= link_to "Rating", movies_path(sort: "rating", direction: params[:direction] == "asc" ? "desc" : "asc") %>
+      </th>
+      <th>
+        <%= link_to "Release Date", movies_path(sort: "release_date", direction: params[:direction] == "asc" ? "desc" : "asc") %>
+      </th>
       <th>Actions</th>
     </tr>
   </thead>
+
   <tbody>
     <% @movies.each do |movie| %>
       <tr>
@@ -19,6 +26,4 @@
       </tr>
     <% end %>
   </tbody>
-  <tfoot>
-    <tr>
-      <td
+</table>

@@ -3,8 +3,20 @@ class MoviesController < ApplicationController
 
   # GET /movies or /movies.json
   def index
+  sort = params[:sort] || session[:sort]      # 用户点击的列，或者上次选择的列
+  direction = params[:direction] || session[:direction] || 'asc'  # 升序/降序
+
+  if %w[title rating release_date].include?(sort)
+    @movies = Movie.order("#{sort} #{direction}")
+  else
     @movies = Movie.all
   end
+
+  # 保存排序选择
+  session[:sort] = sort
+  session[:direction] = direction
+end
+
 
   # GET /movies/1 or /movies/1.json
   def show
